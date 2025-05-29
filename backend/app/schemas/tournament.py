@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import date
 from typing import Optional
+from uuid import UUID
 
 class TournamentBase(BaseModel):
     name: str
@@ -13,7 +14,7 @@ class TournamentCreate(TournamentBase):
     pass
 
 class Tournament(TournamentBase):
-    id: int
+    id: UUID
 
     class Config:
-        from_attributes = True
+        orm_mode = True

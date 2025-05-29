@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import players, tournament
+from app.routers import players, tournament, match
 import logging
 
 
@@ -15,6 +15,7 @@ app = FastAPI()
 
 app.include_router(players.router, prefix="/players", tags=["players"])
 app.include_router(tournament.router, prefix="/tournaments", tags=["tournaments"])
+app.include_router(match.router, prefix="/matches", tags=["matches"]) 
 
 @app.on_event("startup")
 async def startup_event():
